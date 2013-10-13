@@ -1,6 +1,9 @@
-<% @posts.each do |x| %>
+<h1>Posts</h1>
 
-<a href="/posts/<%= x.id %>"><%= x.title %></a><br><br>
+<% @posts.each do |post| %>
 
-<% end %>
+<a href="/post/<%= post.id %>"><%= post.title %></a><br><br>
 
+<% end %><br>
+
+<a href="/create_posts">Create A New Post</a>

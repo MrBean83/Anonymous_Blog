@@ -1,2 +1,15 @@
+<p><%= @post.body %></p><br>
 
-<%= @post.body %>
+<% @post.tags.each do |tag| %>
+
+<p><%= tag.name %></p>
+
+<% end %>
+
+<a href=    >
+
+<a href='/edit_post/<%= @post.id %>'>Edit This Post?</a><br>
+
+<a href='/post/delete_post/<%= @post.id %>'>Delete This Post?</a>
+
+

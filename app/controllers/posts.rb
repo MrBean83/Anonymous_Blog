@@ -1,10 +1,11 @@
+
 get '/posts' do
   @posts = Post.all
   erb :posts
 end
 
-get '/posts/:id' do
-  @post = Post.find_by_id(params[:id])
+get '/post/:id' do
+  @post = Post.find(params[:id])
   erb :post 
 end
 
@@ -12,14 +13,24 @@ get '/create_posts' do
   erb :create_posts
 end
 
-post'/create_posts' do
-  p "hello"
-  @post = params[:post]
-  erb '/posts'
+post '/create_posts' do
+  @post = Post.create(params[:post])
+  redirect '/posts'
 end
 
-# get do
-# end
+get '/edit_post/:id' do
+  @post = Post.find(params[:id])
+  erb :edit_post
+end
 
-# post do
-# end
+post '/update_post/:id' do
+  @post = Post.find(params[:id])
+  @post.update_attributes(params[:post])
+  redirect '/posts'
+end
+
+get '/post/delete_post/:id' do
+  @post = Post.find(params[:id])
+  @post.destroy
+  redirect '/'
+end
